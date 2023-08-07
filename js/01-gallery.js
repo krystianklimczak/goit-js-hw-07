@@ -26,25 +26,51 @@ gallery.append(...galleryArray);
 
 const galleryItem = document.querySelectorAll('.gallery__item');
 
-galleryItem.forEach(el => {
-  el.addEventListener('click', event => {
-    event.preventDefault();
-    const instance = basicLightbox
-      .create(
-        `
-    <img src="${event.target.dataset.source}" />`,
-        {
-          onShow: instance => {
-            const handler = ev => {
-              if (ev.key === 'Escape') {
-                instance.close();
-                document.removeEventListener('keydown', handler);
-              }
-            };
-            document.addEventListener('keydown', handler);
-          },
-        }
-      )
-      .show();
-  });
+// galleryItem.forEach(el => {
+//   el.addEventListener('click', event => {
+//     event.preventDefault();
+//     const instance = basicLightbox
+//       .create(
+//         `
+//     <img src="${event.target.dataset.source}" />`,
+//         {
+//           onShow: instance => {
+//             const handler = ev => {
+//               if (ev.key === 'Escape') {
+//                 instance.close();
+//                 document.removeEventListener('keydown', handler);
+//               }
+//             };
+//             document.addEventListener('keydown', handler);
+//           },
+//         }
+//       )
+//       .show();
+//   });
+// });
+
+gallery.addEventListener('click', e => {
+  e.preventDefault();
+  // console.log(e.target.dataset.source);
+  if (!e.target.dataset.source) {
+    return;
+  }
+  // console.log('git');
+  const instance = basicLightbox
+    .create(
+      `
+      <img src="${e.target.dataset.source}" />`,
+      {
+        onShow: instance => {
+          const handler = ev => {
+            if (ev.key === 'Escape') {
+              instance.close();
+              document.removeEventListener('keydown', handler);
+            }
+          };
+          document.addEventListener('keydown', handler);
+        },
+      }
+    )
+    .show();
 });
