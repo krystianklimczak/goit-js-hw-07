@@ -8,7 +8,7 @@ galleryItems.forEach(img => {
   const galleryElement = document.createElement('li');
   //   galleryElement.classList.add('gallery__item');
   const imageContent = `
-  <a class="gallery__item" href="${img.original}">
+  <a class="gallery__link" href="${img.original}">
     <img
       class="gallery__image"
       src="${img.preview}"
