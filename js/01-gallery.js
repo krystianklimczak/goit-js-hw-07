@@ -51,11 +51,9 @@ const galleryItem = document.querySelectorAll('.gallery__item');
 
 gallery.addEventListener('click', e => {
   e.preventDefault();
-  // console.log(e.target.dataset.source);
   if (!e.target.dataset.source) {
     return;
   }
-  // console.log('git');
   const instance = basicLightbox
     .create(
       `
