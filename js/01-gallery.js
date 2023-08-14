@@ -51,7 +51,7 @@ const galleryItem = document.querySelectorAll('.gallery__item');
 
 gallery.addEventListener('click', e => {
   e.preventDefault();
-  if (!e.target.dataset.source) {
+  if (e.target.nodeName !== 'IMG') {
     return;
   }
   const instance = basicLightbox
